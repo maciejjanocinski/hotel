@@ -1,9 +1,8 @@
 package com.example.hotel.rooms;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.hotel.guest.Guest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,12 +16,18 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private int roomNumber;
     private int capacity;
     private double price;
     private boolean isAvailable = true;
 
-    public Room(int capacity, double price) {
+    @ManyToOne
+    @JsonIgnore
+    private Guest guest;
+
+    public Room(int capacity,int roomNumber, double price) {
         this.capacity = capacity;
+        this.roomNumber = roomNumber;
         this.price = price;
     }
 }

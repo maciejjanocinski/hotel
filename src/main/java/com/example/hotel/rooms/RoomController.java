@@ -1,9 +1,8 @@
 package com.example.hotel.rooms;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +14,13 @@ public class RoomController {
     private final RoomService roomService;
 
     @GetMapping("/")
-    List<Room> getBodyMetrics() {
+    List<Room> getAvailableRooms() {
         return roomService.getAvailableRooms();
+    }
+
+    @PostMapping("/")
+    BookRoomResponse bookRoom(@RequestBody BookRoomRequest request) {
+       return roomService.bookRoom(request);
     }
 
 

@@ -1,7 +1,8 @@
-package com.example.hotel.client;
+package com.example.hotel.guest;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface GuestRepository extends JpaRepository<Guest, Long> {
 }

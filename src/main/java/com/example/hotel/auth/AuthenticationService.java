@@ -1,7 +1,7 @@
 package com.example.hotel.auth;
 
-import com.example.hotel.client.Client;
-import com.example.hotel.client.ClientRepository;
+import com.example.hotel.guest.Guest;
+import com.example.hotel.guest.GuestRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 class AuthenticationService {
 
-    private final ClientRepository clientRepository;
+    private final GuestRepository guestRepository;
 
     void register(RegisterDto registerDto) {
-        Client client = Client.builder()
+        Guest guest = Guest.builder()
                 .username(registerDto.username())
                 .password(registerDto.password())
                 .confirmPassword(registerDto.confirmPassword())
@@ -22,6 +22,6 @@ class AuthenticationService {
                 .phone(registerDto.phone())
                 .build();
 
-        clientRepository.save(client);
+        guestRepository.save(guest);
     }
 }
